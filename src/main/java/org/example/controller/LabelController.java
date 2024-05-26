@@ -3,31 +3,33 @@ package org.example.controller;
 
 
 import org.example.model.Label;
-import org.example.repositoryImpl.LabelRepoImpl;
-import org.example.repositoryInterface.LabelRepo;
+import org.example.repository.jdbc.JdbcLabelRepoImpl;
+import org.example.repository.LabelRepo;
+import org.example.service.LabelService;
+import org.example.service.WriterService;
 
 import java.util.List;
 
 public class LabelController {
-    private final LabelRepo labelRepo = new LabelRepoImpl();
+    private final LabelService labelService = new LabelService();
 
     public Label getById(Long id) {
-        return labelRepo.getById(id);
+        return labelService.getById(id);
     }
 
     public List<Label> getAll() {
-        return labelRepo.getAll();
+        return labelService.getAll();
     }
 
     public Label save(Label label) {
-        return labelRepo.save(label);
+        return labelService.save(label);
     }
 
     public Label update(Label label) {
-        return labelRepo.save(label);
+        return labelService.save(label);
     }
 
     public void delete(Long id) {
-        labelRepo.deleteById(id);
+        labelService.delete(id);
     }
 }

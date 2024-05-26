@@ -2,31 +2,32 @@ package org.example.controller;
 
 
 import org.example.model.Post;
-import org.example.repositoryImpl.PostRepoImpl;
-import org.example.repositoryInterface.PostRepo;
+import org.example.repository.jdbc.JdbcPostRepoImpl;
+import org.example.repository.PostRepo;
+import org.example.service.PostService;
 
 import java.util.List;
 
 public class PostController {
-    private final PostRepo postRepo = new PostRepoImpl();
+    private final PostService postService = new PostService();
 
     public Post getById(Long id) {
-        return postRepo.getById(id);
+        return postService.getById(id);
     }
 
     public List<Post> getAll() {
-        return postRepo.getAll();
+        return postService.getAll();
     }
 
     public Post save(Post post) {
-        return postRepo.save(post);
+        return postService.save(post);
     }
 
     public Post update(Post post) {
-        return postRepo.save(post);
+        return postService.save(post);
     }
 
     public void delete(Long id) {
-        postRepo.deleteById(id);
+        postService.delete(id);
     }
 }
